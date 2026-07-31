@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Vida - Estudiante de Ingeniería de Sistemas</title>
+    
+    <style>
+        /* ESTILOS CSS BÁSICOS */
+        
+        /* Reset y configuración general */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Contenedor principal estilo tarjeta */
+        .cv-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            border: 1px solid #e1e4e8;
+        }
+
+        /* Encabezado: Foto, Nombre y Datos clave */
+        header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            border-bottom: 3px solid #1b4332;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #1b4332;
+        }
+
+        .header-text h1 {
+            color: #1a3636;
+            font-size: 24pt;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 12pt;
+            color: #2d6a4f;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Secciones del CV */
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 13pt;
+            color: #1b4332;
+            border-bottom: 1px solid #d3d7de;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        p, li {
+            font-size: 10.5pt;
+        }
+
+        /* Estructura para elementos de Experiencia y Educación */
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 10px;
+        }
+
+        .item-title {
+            font-weight: bold;
+            color: #1a3636;
+        }
+
+        .item-date {
+            color: #777777;
+            font-size: 9.5pt;
+            font-style: italic;
+        }
+
+        .institution {
+            color: #555555;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Contacto y Redes Sociales */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .contact-item {
+            font-size: 10pt;
+        }
+
+        .contact-item strong {
+            color: #1b4332;
+        }
+
+        a {
+            color: #2d6a4f;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Badges / Etiquetas para certificaciones */
+        .badge {
+            background-color: #e8f5e9;
+            color: #1b4332;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            display: inline-block;
+            margin: 3px 4px 4px 0;
+            font-weight: bold;
+            border: 1px solid #c8e6c9;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 9pt;
+            color: #888888;
+            border-top: 1px solid #eeeeee;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-container">
+        
+        <!-- ENCABEZADO Y FOTO DE PERFIL -->
+        <header>
+            <img src="https://via.placeholder.com/150" alt="Foto de Perfil" class="profile-img">
+            <div class="header-text">
+                <h1>Mariaisabel Zuluaga Quintero</h1>
+                <div class="subtitle">Estudiante de Computacion cientifica| Ingenieria de sistemas</div>
+                <p>Medellín, Colombia</p>
+            </div>
+        </header>
+
+        <!-- INFORMACIÓN DE CONTACTO Y REDES SOCIALES -->
+        <section>
+            <h2>Contacto & Redes Sociales</h2>
+            <div class="contact-grid">
+                <div class="contact-item"><strong>Correo:</strong> mquinteroisabel32@gmail.com</div>
+                <div class="contact-item"><strong>Teléfono:</strong> +57 300 6153258div>
+                <div class="contact-item"><strong>GitHub:</strong> <a href="https://github.com/Mariaisabel2" target="_blank">https://github.com/Mariaisabel2</a></div>
+            </div>
+        </section>
+
+        <!-- PERFIL PROFESIONAL -->
+        <section>
+            <h2>Perfil Profesional</h2>
+            <p>Estudiante de Computacion cientifica apasionado por la investigacion.
+        <section>
+            <h2>Experiencia Laboral</h2>
+            <div>
+                <div class="item-header">
+                    <span class="item-title">Asesora al cliente</span>
+                    <span class="item-date">2023 - Presente</span>
+              
+            </div>
+            
+            <div>
+                <div class="item-header">
+                    <span class="item-title">Asistente de Soporte Técnico</span>
+                    <span class="item-date">2024 - 2025</span>
+                </div>
+                <div class="institution">Empresa / Trabajo Práctico</div>
+                <ul>
+                    <li>Mantenimiento preventivo de equipos de cómputo y configuración de redes locales básicas.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- EDUCACIÓN -->
+        <section>
+            <h2>Educación</h2>
+            <div>
+                <div class="item-header">
+                    <span class="item-title">Pregrado en Computacion cientifica con doble titulacion en ingeniera de sistemas</span>
+                    <span class="item-date">2023 - Presente</span>
+                </div>
+                <div class="institution">Universidad de Medelli / Institución Educativa</div>
+            </div>
+        </section>
+
+        <!-- CERTIFICACIONES Y CURSOS -->
+        <section>
+            <h2>Certificaciones</h2>
+            <div>
+                <span class="badge">Nominacion global a la Nasa</span>
+                <span class="badge">Segundo puesto hackathon de NOVA, EAFIT 2026-1</span>
+                <span class="badge">Semillero de investigacion materiales con impacto</span>
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer>
+            <p>© 2026 Hoja de Vida - Desarrollada en HTML5 & CSS3</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
