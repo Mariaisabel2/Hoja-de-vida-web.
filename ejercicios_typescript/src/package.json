@@ -1,5 +1,5 @@
 {
-  "name": "ejercicios_ts",
+  "name": "ejercicios_typescript",
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
@@ -7,7 +7,7 @@
     "start": "node dist/index.js",
     "dev": "npx ts-node index.ts"
   },
-  "author": "sanma613",
+  "author": "Mariaisabel2",
   "license": "ISC",
   "description": "",
   "dependencies": {
