@@ -136,3 +136,23 @@ postForm.addEventListener("submit", (e) => {
 
 function showError(id, msg) { document.getElementById(id).textContent = msg; }
 function clearError(id) { document.getElementById(id).textContent = ""; }
+
+window.handleLike = function(id) {
+  const post = posts.find(p => p.id === id);
+  if (post) {
+    post.likes++;
+    renderPosts(posts);
+  }
+};
+
+window.handleAddComment = function(id) {
+  const input = document.getElementById(`comment-input-${id}`);
+  const text = input ? input.value.trim() : "";
+  if (text) {
+    const post = posts.find(p => p.id === id);
+    if (post) {
+      post.comments.push(`<strong>${currentUser ? '@' + currentUser : 'Anónimo'}:</strong> ${text}`);
+      renderPosts(posts);
+    }
+  }
+};
