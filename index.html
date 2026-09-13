@@ -55,6 +55,47 @@
       <h1>Descubre y comparte vivencias del día a día</h1>
       <p>Un espacio donde cada momento cuenta.</p>
     </section>
+
+    <section id="create" class="create-section">
+     <h2>Crear nueva entrada en tu blog</h2>
+     <form id="postForm" class="post-form" novalidate>
+      <div class="form-group">
+        <label for="postTitle">Título de tu entrada:</label>
+        <input type="text" id="postTitle" placeholder="Ej. Día de simulación en Python">
+        <span class="error-msg" id="postTitleError"></span>
+      </div>
+      <div class="form-group">
+        <label for="postMedia">URL de imagen o gif:</label>
+        <input type="url" id="postMedia" placeholder="https://ejemplo.com/foto.jpg">
+        <span class="error-msg" id="postMediaError"></span>
+      </div>
+      <div class="form-group">
+        <label for="postContent">¿Qué hiciste hoy?</label>
+        <textarea id="postContent" rows="4" placeholder="Detalles de tu día..."></textarea>
+        <span class="error-msg" id="postContentError"></span>
+      </div>
+      <div class="form-group">
+        <label for="postVisibility">Visibilidad:</label>
+        <select id="postVisibility">
+          <option value="Público">🟢 Público (Todos)</option>
+          <option value="Privado">🔒 Privado (Solo seguidores)</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary">Publicar Entrada</button>
+    </form>
+  </section>
+
+  <section id="feed" class="feed-section">
+    <div class="feed-header">
+      <h2>Para ti</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="Público">Públicos</button>
+        <button class="filter-btn" data-filter="Privado">Privados</button>
+      </div>
+    </div>
+    <div class="posts-grid" id="postsGrid"></div>
+  </section>
   </main>
   <script src="app.js"></script>
 </body>
