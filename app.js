@@ -54,3 +54,24 @@ function renderPosts(postsToRender) {
     postsGrid.appendChild(card);
   });
 }
+
+const navToggle = document.getElementById("navToggle");
+const mainNav = document.getElementById("mainNav");
+
+navToggle.addEventListener("click", () => {
+  mainNav.classList.toggle("active");
+});
+
+const filterBtns = document.querySelectorAll(".filter-btn");
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const filter = btn.getAttribute("data-filter");
+    if (filter === "all") {
+      renderPosts(posts);
+    } else {
+      renderPosts(posts.filter(p => p.visibility === filter));
+    }
+  });
+});
