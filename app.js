@@ -120,13 +120,110 @@ let posts = [
     comments: ["¡Ese 5.0 ya está asegurado!", "Excelente trabajo 👏"]
   }
 ];
-const postsGrid = document.getElementById("postsGrid");
+let currentUser = "";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const postsGrid = document.getElementById("postsGrid");
+  const navToggle = document.getElementById("navToggle");
+  const mainNav = document.getElementById("mainNav");
+  const loginModal = document.getElementById("loginModal");
+  const loginForm = document.getElementById("loginForm");
+  const postForm = document.getElementById("postForm");
+  const userGreeting = document.getElementById("userGreeting");
+
   renderPosts(posts);
+
+  if (navToggle && mainNav) {
+    navToggle.addEventListener("click", () => {
+      mainNav.classList.toggle("active");
+    });
+  }
+
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const filter = btn.getAttribute("data-filter");
+      if (filter === "all") {
+        renderPosts(posts);
+      } else {
+        renderPosts(posts.filter(p => p.visibility === filter));
+      }
+    });
+  });
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      let valid = true;
+
+      if (!username) { showError("usernameError", "El usuario es obligatorio"); valid = false; }
+      else clearError("usernameError");
+
+      if (!email.includes("@") || !email.includes(".")) { showError("emailError", "Correo no válido"); valid = false; }
+      else clearError("emailError");
+
+      if (password.length < 6) { showError("passwordError", "Mínimo 6 caracteres"); valid = false; }
+      else clearError("passwordError");
+
+      if (valid) {
+        currentUser = username;
+        if (userGreeting) userGreeting.textContent = `@${currentUser}`;
+        if (loginModal) loginModal.style.display = "none";
+      }
+    });
+  }
+
+  if (postForm) {
+    postForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const title = document.getElementById("postTitle").value.trim();
+      const media = document.getElementById("postMedia").value.trim();
+      const content = document.getElementById("postContent").value.trim();
+      const visibility = document.getElementById("postVisibility").value;
+      let valid = true;
+
+      if (title.length < 5) { showError("postTitleError", "Mínimo 5 caracteres"); valid = false; }
+      else clearError("postTitleError");
+
+      if (!content) { showError("postContentError", "El contenido no puede estar vacío"); valid = false; }
+      else clearError("postContentError");
+
+      if (valid) {
+        posts.unshift({
+          id: Date.now(),
+          author: currentUser || "Anónimo",
+          title,
+          media: media || "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=600&q=80",
+          content,
+          visibility,
+          likes: 0,
+          comments: []
+        });
+        renderPosts(posts);
+        postForm.reset();
+      }
+    });
+  }
 });
 
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = msg;
+}
+
+function clearError(id) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = "";
+}
+
 function renderPosts(postsToRender) {
+  const postsGrid = document.getElementById("postsGrid");
+  if (!postsGrid) return;
   postsGrid.innerHTML = "";
   if (postsToRender.length === 0) {
     postsGrid.innerHTML = "<p>No hay publicaciones.</p>";
@@ -148,93 +245,15 @@ function renderPosts(postsToRender) {
       <div class="post-card-footer">
         <button class="like-btn" onclick="handleLike(${post.id})">❤️ <span>${post.likes}</span></button>
         <ul class="comments-list">${post.comments.map(c => `<li>${c}</li>`).join("")}</ul>
+        <div class="comment-input-group">
+          <input type="text" id="comment-input-${post.id}" placeholder="Escribe un comentario...">
+          <button class="btn-secondary" onclick="handleAddComment(${post.id})">Enviar</button>
+        </div>
       </div>
     `;
     postsGrid.appendChild(card);
   });
 }
-
-const navToggle = document.getElementById("navToggle");
-const mainNav = document.getElementById("mainNav");
-
-navToggle.addEventListener("click", () => {
-  mainNav.classList.toggle("active");
-});
-
-const filterBtns = document.querySelectorAll(".filter-btn");
-filterBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    filterBtns.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    const filter = btn.getAttribute("data-filter");
-    if (filter === "all") {
-      renderPosts(posts);
-    } else {
-      renderPosts(posts.filter(p => p.visibility === filter));
-    }
-  });
-});
-let currentUser = "";
-const loginModal = document.getElementById("loginModal");
-const loginForm = document.getElementById("loginForm");
-const postForm = document.getElementById("postForm");
-const userGreeting = document.getElementById("userGreeting");
-
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const username = document.getElementById("username").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
-  let valid = true;
-
-  if (!username) { showError("usernameError", "El usuario es obligatorio"); valid = false; }
-  else clearError("usernameError");
-
-  if (!email.includes("@") || !email.includes(".")) { showError("emailError", "Correo no válido"); valid = false; }
-  else clearError("emailError");
-
-  if (password.length < 6) { showError("passwordError", "Mínimo 6 caracteres"); valid = false; }
-  else clearError("passwordError");
-
-  if (valid) {
-    currentUser = username;
-    userGreeting.textContent = `@${currentUser}`;
-    loginModal.style.display = "none";
-  }
-});
-
-postForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const title = document.getElementById("postTitle").value.trim();
-  const media = document.getElementById("postMedia").value.trim();
-  const content = document.getElementById("postContent").value.trim();
-  const visibility = document.getElementById("postVisibility").value;
-  let valid = true;
-
-  if (title.length < 5) { showError("postTitleError", "Mínimo 5 caracteres"); valid = false; }
-  else clearError("postTitleError");
-
-  if (!content) { showError("postContentError", "El contenido no puede estar vacío"); valid = false; }
-  else clearError("postContentError");
-
-  if (valid) {
-    posts.unshift({
-      id: Date.now(),
-      author: currentUser || "Anónimo",
-      title,
-      media: media || "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=600&q=80",
-      content,
-      visibility,
-      likes: 0,
-      comments: []
-    });
-    renderPosts(posts);
-    postForm.reset();
-  }
-});
-
-function showError(id, msg) { document.getElementById(id).textContent = msg; }
-function clearError(id) { document.getElementById(id).textContent = ""; }
 
 window.handleLike = function(id) {
   const post = posts.find(p => p.id === id);
