@@ -2,7 +2,7 @@
 
 **Estudiante:** María Isabel Zuluaga Quintero  
 **Curso:** Desarrollo Web (Semestre 2026-2)  
-**Despliegue en Vercel:** [https://hoja-de-vida-web-git-dailyspace-web-punkyymami.vercel.app/?#](https://hoja-de-vida-web-git-dailyspace-web-punkyymami.vercel.app/?#)
+**Despliegue en Vercel:** [https://dailyspace-ten.vercel.app/](https://dailyspace-ten.vercel.app/)
 
 ---
 
@@ -27,3 +27,19 @@ Como tutor para resolver dudas sobre la configuración del layout responsive y o
 
 ### ¿Qué fue lo más difícil y cómo lo resolviste?
 Mantener sincronizado el renderizado del DOM al agregar comentarios o dar Likes sin perder la lista original de publicaciones.
+
+## 📸 Capturas de Pantalla
+
+### Vista previa desde PC
+<p align="center">
+  <img src="./imagenes/pc1.jpeg" alt="Vista previa desde PC 1" width="700">
+  <br>
+  <img src="./imagenes/pc2.jpeg" alt="Vista previa desde PC 2" width="700">
+</p>
+
+### Vista previa desde Móvil
+<p align="center">
+  <img src="./imagenes/movil1.jpeg" alt="Vista previa desde móvil 1" width="250">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./imagenes/movil2.jpeg" alt="Vista previa desde móvil 2" width="250">
+</p>
