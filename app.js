@@ -18,7 +18,7 @@ let posts = [
     visibility: "Público",
     likes: 14,
     comments: ["El tono amarillo pastel se ve muy bien."]
-  }
+  },
 {
     id: 3,
     author: "valentina_sea",
@@ -48,7 +48,7 @@ let posts = [
     visibility: "Privado",
     likes: 5,
     comments: ["¡Con toda la actitud para la semana! 💪"]
-  }
+  },
 {
     id: 6,
     author: "camila_nature",
@@ -78,7 +78,7 @@ let posts = [
     visibility: "Privado",
     likes: 9,
     comments: ["El mejor lugar para concentrarse."]
-  }
+  },
 {
     id: 9,
     author: "andres_travels",
